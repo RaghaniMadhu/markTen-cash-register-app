@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0px auto;
+}
+
+:root{
+    --primary-color:#813772;
+    --secondary-color: #f5d0fe;
+    --white-color: #fff;
+    --black-color: #000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 0.5rem 1rem;
+    border-bottom-left-radius: 0.5rem;
+    text-align: center;
+}
+
+.title{
+    font-size: x-large;
+}
+
+.container{
+    padding: 0rem 1rem;
+}
+
+.container-center{
+    text-align: center;
+    margin: 2rem;
+}
+
+.description{
+    margin: 1rem;
+    font-size: larger;
+}
+
+.input {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    margin: 0.7rem auto;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 20vw;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: auto;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    font-size: large;
+    font-family: 'Quicksand', sans-serif;  
+    border: 2px solid var(--primary-color);
+    border-radius: 0.5rem;  
+}
+
+.input-label{
+    display: block;
+}
+
+#error-message {
+    display: block;
+    font-size: larger;
+    margin: 1rem 0 0;
+}
+
+td, th {
+    border: 2px solid var(--primary-color);
+    padding: 0.2rem;
+}
+
+table{
+    border-collapse: collapse;
+    width: 50%;
+    text-align: justify;
+    margin: auto;
+}
+
+td {
+    text-align: center;
+    width: 10%;
+}
+
+caption{
+    margin: 1rem auto;
+    font-size: x-large;
+}
+
+.footer{
+    background-color: var(--primary-color);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    color: var(--white-color);
+    border-top-right-radius: 1rem;
+}
+
+.footer .footer-header{
+    font-weight: bold;
+}
+

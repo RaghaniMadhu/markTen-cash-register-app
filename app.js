@@ -9,11 +9,12 @@ const notes = [2000, 500, 100, 20, 10, 5, 1];
 checkButton.addEventListener("click", function processing(){
     hideErrorMessage();
     if(billAmount.value > 0){
-        if(cashGiven.value >= billAmount.value){
+        if(cashGiven.value < billAmount.value){
+            showErrorMessage("Do you want to wash utensils?");
+            console.log(cashGiven.value + " " + billAmount.value);
+        }else{
             amountToBeReturned = cashGiven.value - billAmount.value;
             calculateNotes(amountToBeReturned);
-        }else{
-            showErrorMessage("Do you want to wash utensils?");
         }
     }else{
         showErrorMessage("Bill Amount can't be less than 0.");
@@ -21,6 +22,13 @@ checkButton.addEventListener("click", function processing(){
 } );
 
 function calculateNotes(amountToBeReturned){
+    if(amountToBeReturned<0){
+        showErrorMessage("Do you want to wash utensils?");
+        for(var i = 0; i < 7; i++){
+            noOfNotesTableCells[i].innerText = "";
+        }
+        return;
+    }
     for(var i = 0; i < 7; i++){
         var noOfNotes = Math.trunc(amountToBeReturned/notes[i]);
 
