@@ -106,6 +106,10 @@ caption{
     text-align: center;
     color: var(--white-color);
     border-top-right-radius: 1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer .footer-header{

@@ -6,6 +6,7 @@ noOfNotesTableCells = document.querySelectorAll(".no-of-notes");
 nextButton = document.querySelector("#next");
 cashGivenLabel = document.querySelector("#cash-given-label");
 table = document.querySelector("table");
+footer = document.querySelector("footer");
 
 const notes = [2000, 500, 100, 20, 10, 5, 1];
 
@@ -17,6 +18,7 @@ next.addEventListener("click", function checkInput(){
         cashGiven.style.display = "block";
         checkButton.style.display = "block";
         table.style.display = "block";
+        footer.style.position = "relative";
     }else{
         showErrorMessage("Bill Amount can't be less than 0.");
     }
