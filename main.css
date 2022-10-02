@@ -112,3 +112,6 @@ caption{
     font-weight: bold;
 }
 
+#cash-given-label, #cash-given, #check-button, table {
+    display: none;
+}
