@@ -17,7 +17,6 @@ next.addEventListener("click", function checkInput(){
         cashGivenLabel.style.display = "block";
         cashGiven.style.display = "block";
         checkButton.style.display = "block";
-        table.style.display = "block";
         footer.style.position = "relative";
     }else{
         showErrorMessage("Bill Amount can't be less than 0.");
@@ -27,12 +26,16 @@ next.addEventListener("click", function checkInput(){
 checkButton.addEventListener("click", function processing(){
     hideErrorMessage();
     if(billAmount.value > 0){
-        if(cashGiven.value < billAmount.value){
-            showErrorMessage("Do you want to wash utensils?");
-            console.log(cashGiven.value + " " + billAmount.value);
-        }else{
-            amountToBeReturned = cashGiven.value - billAmount.value;
-            calculateNotes(amountToBeReturned);
+        if(cashGiven.value > 0){
+            if(cashGiven.value < billAmount.value){
+                showErrorMessage("Do you want to wash utensils?");
+                console.log(cashGiven.value + " " + billAmount.value);
+            }else{
+                amountToBeReturned = cashGiven.value - billAmount.value;
+                calculateNotes(amountToBeReturned);
+            }
+        }else{            
+            showErrorMessage("Cash Given Amount can't be less than 0.");            
         }
     }else{
         showErrorMessage("Bill Amount can't be less than 0.");
@@ -40,20 +43,25 @@ checkButton.addEventListener("click", function processing(){
 } );
 
 function calculateNotes(amountToBeReturned){
-    if(amountToBeReturned<0){
+    if(amountToBeReturned < 0){
         showErrorMessage("Do you want to wash utensils?");
         for(var i = 0; i < 7; i++){
             noOfNotesTableCells[i].innerText = "";
         }
         return;
+    }else if(amountToBeReturned === 0){
+        showErrorMessage("Nothing needs to be returned");
+    }else{
+        showOutputTable();
+        for(var i = 0; i < 7; i++){
+            var noOfNotes = Math.trunc(amountToBeReturned/notes[i]);
+    
+            noOfNotesTableCells[i].innerText = noOfNotes;
+    
+            amountToBeReturned = amountToBeReturned % notes[i];
+        }
     }
-    for(var i = 0; i < 7; i++){
-        var noOfNotes = Math.trunc(amountToBeReturned/notes[i]);
-
-        noOfNotesTableCells[i].innerText = noOfNotes;
-
-        amountToBeReturned = amountToBeReturned % notes[i];
-    }
+    
 }
 
 function hideErrorMessage(){
@@ -61,6 +69,11 @@ function hideErrorMessage(){
 }
 
 function showErrorMessage(message){
+    table.style.display = "none";
     errorMessage.style.display = "block";
     errorMessage.innerText = message;
+}
+
+function showOutputTable(){
+    table.style.display = "block";
 }
